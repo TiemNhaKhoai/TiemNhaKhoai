@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tiệm nhà Khoai</title>
+<meta name="description" content="Tiệm nhà Khoai - Order Album, MD và hàng Hàn Quốc">
+<link rel="icon" href="assets/logo-tiem-nha-khoai.jpg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="appbar">
+  <div class="brand-mini"><img src="assets/logo-tiem-nha-khoai.jpg"><span>Tiệm nhà Khoai</span></div>
+  <button class="iconbtn" onclick="openOrders()" aria-label="Tra cứu đơn">🔔</button>
+</header>
+
+<main>
+  <section class="cover">
+    <img src="assets/banner-tiem-nha-khoai.jpg" class="cover-img" alt="Tiệm nhà Khoai">
+    <div class="profile-row">
+      <img class="avatar" src="assets/logo-tiem-nha-khoai.jpg" alt="Tiệm nhà Khoai">
+      <div class="social-bubbles"><span>f</span><span>◎</span></div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div>
+      <h1>Tiệm nhà Khoai</h1>
+      <p>🇰🇷 Order Album & MD Hàn Quốc · Nhận order / hàng có sẵn</p>
+    </div>
+    <button class="edit-look" onclick="openInfo()">✎ Thông tin shop</button>
+  </section>
+
+  <div class="quick">
+    <button onclick="filterCat('ALBUM')"><span>💿</span><b>Album</b><small>K-POP</small></button>
+    <button onclick="filterCat('MD')"><span>🎁</span><b>MD</b><small>Goods</small></button>
+    <button onclick="filterCat('LIGHTSTICK')"><span>📣</span><b>Lightstick</b><small>Official</small></button>
+    <button onclick="openOrders()"><span>📦</span><b>Tra cứu</b><small>Đơn hàng</small></button>
+  </div>
+
+  <section class="notice">
+    <div class="notice-icon">💛</div>
+    <div><b>Chào mừng đến Tiệm nhà Khoai</b><p>Chọn sản phẩm, thêm vào giỏ và gửi đơn cho shop.</p></div>
+  </section>
+
+  <section class="category-strip">
+    <button class="active" onclick="filterCat('Tất cả')">Tất cả</button>
+    <button onclick="filterCat('ALBUM')">Album</button>
+    <button onclick="filterCat('MD')">MD</button>
+    <button onclick="filterCat('LIGHTSTICK')">Lightstick</button>
+    <button onclick="filterCat('CORTIS')">CORTIS</button>
+  </section>
+
+  <section class="title-row"><h2>Sản phẩm mới</h2><span id="count"></span></section>
+  <section id="products" class="products"></section>
+
+  <section class="help-card">
+    <h2>💌 Cần hỗ trợ?</h2>
+    <p>Nhắn tin cho Tiệm nhà Khoai để hỏi giá, slot order hoặc tình trạng hàng.</p>
+    <div class="help-actions">
+      <a href="#" onclick="contactFacebook(event)">Facebook</a>
+      <a href="#" onclick="contactInstagram(event)">Instagram</a>
+      <button onclick="openOrders()">Tra cứu đơn</button>
+    </div>
+  </section>
+</main>
+
+<nav class="bottom-nav">
+  <button class="active" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span>⌂</span>Trang chủ</button>
+  <button onclick="scrollToProducts()"><span>▣</span>Nội dung</button>
+  <button class="plus" onclick="openCart()">＋<i id="cartCount">0</i></button>
+  <button onclick="openCart()"><span>🛍</span>Giỏ hàng</button>
+  <button onclick="openInfo()"><span>☰</span>Khác</button>
+</nav>
+
+<div id="modal" class="modal hidden"><div id="sheet" class="sheet"></div></div>
+<script src="app.js"></script>
+</body>
+</html>
