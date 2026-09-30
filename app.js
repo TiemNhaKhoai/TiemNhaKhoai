@@ -1,34 +1,87 @@
 const products=[
-{id:1,name:"CORTIS Ball Baby - Pink",cat:"CORTIS",price:26500,img:"assets/product-placeholder.jpg",desc:"CORTIS Ball Baby phiên bản Pink."},
-{id:2,name:"CORTIS Ball Baby - Blue",cat:"CORTIS",price:26500,img:"assets/product-placeholder.jpg",desc:"CORTIS Ball Baby phiên bản Blue."},
-{id:3,name:"CORTIS Ball Baby - Yellow",cat:"CORTIS",price:26500,img:"assets/product-placeholder.jpg",desc:"CORTIS Ball Baby phiên bản Yellow."},
-{id:4,name:"CORTIS Ball Baby - White",cat:"CORTIS",price:26500,img:"assets/product-placeholder.jpg",desc:"CORTIS Ball Baby phiên bản White."},
-{id:5,name:"K-POP Album - Sản phẩm mẫu",cat:"ALBUM",price:25000,img:"assets/product-placeholder.jpg",desc:"Thay bằng ảnh và thông tin sản phẩm thật của shop."},
-{id:6,name:"K-POP MD - Sản phẩm mẫu",cat:"MD",price:50000,img:"assets/product-placeholder.jpg",desc:"Thay bằng ảnh và thông tin sản phẩm thật của shop."},
-{id:7,name:"Official Lightstick - Sản phẩm mẫu",cat:"LIGHTSTICK",price:70000,img:"assets/product-placeholder.jpg",desc:"Thay bằng ảnh và thông tin sản phẩm thật của shop."}
+{id:1,name:"CORTIS Ball Baby - Màu hồng",cat:"CORTIS",price:26500,img:"product-placeholder.jpg",desc:"CORTIS Ball Baby phiên bản Pink."},
+{id:2,name:"CORTIS Ball Baby - Màu Xanh",cat:"CORTIS",price:26500,img:"product-placeholder.jpg",desc:"CORTIS Ball Baby phiên bản Blue."},
+{id:3,name:"CORTIS Ball Baby - Màu vàng",cat:"CORTIS",price:26500,img:"product-placeholder.jpg",desc:"CORTIS Ball Baby phiên bản Yellow."},
+{id:4,name:"CORTIS Ball Baby - Màu trắng",cat:"CORTIS",price:26500,img:"product-placeholder.jpg",desc:"CORTIS Ball Baby phiên bản White."},
+{id:5,name:"K-POP Album - Sản phẩm mẫu",cat:"ALBUM",price:250000,img:"product-placeholder.jpg",desc:"Thay bằng ảnh và thông tin sản phẩm thật của shop."},
+{id:6,name:"K-POP MD - Sản phẩm mẫu",cat:"MD",price:700000,img:"product-placeholder.jpg",desc:"Thay bằng ảnh và thông tin sản phẩm thật của shop."},
+{id:7,name:"Lightstick chính thức - Sản phẩm mẫu",cat:"LIGHTSTICK",price:700000,img:"product-placeholder.jpg",desc:"Thay bằng ảnh và thông tin sản phẩm thật của shop."}
 ];
-let currentCat="Tất cả";
+
 let cart=JSON.parse(localStorage.getItem("khoaiCart")||"[]");
-const money=n=>new Intl.NumberFormat("ko-KR").format(n)+" ₩";
-function save(){localStorage.setItem("khoaiCart",JSON.stringify(cart));document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0)}
-function scrollToProducts(){document.querySelector(".title-row").scrollIntoView({behavior:"smooth"})}
-function filterCat(cat){currentCat=cat;document.querySelectorAll(".category-strip button").forEach(b=>b.classList.toggle("active",b.textContent===cat));render()}
-function render(){let a=currentCat==="Tất cả"?products:products.filter(p=>p.cat===currentCat);document.getElementById("count").textContent=a.length+" sản phẩm";document.getElementById("products").innerHTML=a.map(p=>`<article class="product"><img class="product-img" src="${p.img}" alt="${p.name}"><div class="product-body"><h3>${p.name}</h3><div class="tag">${p.cat}</div><div class="price">${money(p.price)}</div><button onclick="openProduct(${p.id})">Xem & đặt hàng</button></div></article>`).join("")}
-function modal(html){document.getElementById("sheet").innerHTML=html;document.getElementById("modal").classList.remove("hidden")}
-function closeModal(){document.getElementById("modal").classList.add("hidden")}
-document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()})
-function openProduct(id){let p=products.find(x=>x.id===id);window.tmpQty=1;modal(`<button class="close" onclick="closeModal()">×</button><img class="hero-product" src="${p.img}"><h2>${p.name}</h2><div class="price">${money(p.price)}</div><p>${p.desc}</p><div class="option"><button class="selected">${p.cat}</button></div><div class="qty"><button onclick="tmp(-1)">−</button><b id="tmpQty">1</b><button onclick="tmp(1)">+</button></div><button class="full" onclick="add(${p.id},window.tmpQty)">Thêm vào giỏ 🛒</button>`)}
-function tmp(n){window.tmpQty=Math.max(1,window.tmpQty+n);document.getElementById("tmpQty").textContent=window.tmpQty}
-function add(id,qty){let x=cart.find(a=>a.id===id);x?x.qty+=qty:cart.push({id,qty});save();openCart()}
-function remove(id){cart=cart.filter(x=>x.id!==id);save();openCart()}
-function openCart(){if(!cart.length){modal(`<button class="close" onclick="closeModal()">×</button><h2>Giỏ hàng trống 💛</h2><p>Hãy chọn sản phẩm bạn muốn order nhé.</p><button class="full" onclick="closeModal();scrollToProducts()">Xem sản phẩm</button>`);return}let total=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);modal(`<button class="close" onclick="closeModal()">×</button><h2>Giỏ hàng</h2>${cart.map(x=>{let p=products.find(p=>p.id===x.id);return `<div class="cartrow"><img src="${p.img}"><div class="grow"><b>${p.name}</b><div>${money(p.price)} × ${x.qty}</div></div><button onclick="remove(${p.id})">Xóa</button></div>`}).join("")}<div class="total">Tổng: ${money(total)}</div><button class="full" onclick="checkout()">Tiếp tục đặt hàng</button>`)}
-function checkout(){let total=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);modal(`<button class="close" onclick="closeModal()">×</button><h2>Thông tin đặt hàng</h2><div class="field"><label>Tên Facebook *</label><input id="fb"></div><div class="field"><label>Số điện thoại *</label><input id="phone"></div><div class="field"><label>Tên người nhận *</label><input id="receiver"></div><div class="field"><label>Địa chỉ nhận hàng</label><textarea id="address"></textarea></div><div class="field"><label>Ghi chú</label><textarea id="note"></textarea></div><div class="total">Tổng: ${money(total)}</div><button class="full" onclick="place(${total})">Xác nhận đặt hàng</button>`)}
-function place(total){let fb=val("fb"),phone=val("phone"),receiver=val("receiver");if(!fb||!phone||!receiver){alert("Vui lòng nhập đủ thông tin bắt buộc.");return}let orders=JSON.parse(localStorage.getItem("khoaiOrders")||"[]"),id="KHOAI"+Date.now().toString().slice(-7);orders.push({id,fb,phone,receiver,address:val("address"),note:val("note"),total,items:cart,date:new Date().toISOString(),status:"Chờ xác nhận"});localStorage.setItem("khoaiOrders",JSON.stringify(orders));cart=[];save();modal(`<h2>Đặt hàng thành công 💛</h2><div class="orderbox"><b>Mã đơn: ${id}</b><p>Tổng tiền: ${money(total)}</p><p>Trạng thái: Chờ xác nhận</p></div><button class="full" onclick="copyOrder('${id}')">Copy thông tin đơn</button><button class="full" onclick="closeModal()">Đóng</button>`)}
-function val(id){return document.getElementById(id).value.trim()}
-function copyOrder(id){let o=JSON.parse(localStorage.getItem("khoaiOrders")||"[]").find(x=>x.id===id);let t=`Tiệm nhà Khoai - ${o.id}\nFacebook: ${o.fb}\nSĐT: ${o.phone}\nNgười nhận: ${o.receiver}\nĐịa chỉ: ${o.address}\nTổng: ${money(o.total)}\nTrạng thái: ${o.status}`;navigator.clipboard?.writeText(t);alert("Đã copy thông tin đơn")}
-function openOrders(){modal(`<button class="close" onclick="closeModal()">×</button><h2>📦 Tra cứu đơn hàng</h2><div class="field"><label>Số điện thoại</label><input id="lookup" placeholder="Nhập số điện thoại"></div><button class="full" onclick="lookup()">Tra cứu</button><div id="orders"></div>`)}
-function lookup(){let p=val("lookup"),a=JSON.parse(localStorage.getItem("khoaiOrders")||"[]").filter(x=>x.phone===p),e=document.getElementById("orders");e.innerHTML=a.length?a.reverse().map(o=>`<div class="orderbox"><b>${o.id}</b><p>${money(o.total)}</p><p>${o.status}</p></div>`).join(""):"Không tìm thấy đơn hàng."}
-function openInfo(){modal(`<button class="close" onclick="closeModal()">×</button><h2>💛 Tiệm nhà Khoai</h2><p>Shop order Album, MD, Lightstick và hàng Hàn Quốc.</p><div class="orderbox"><b>Giờ hỗ trợ</b><p>Hàng ngày · vui lòng nhắn Facebook/Instagram để được phản hồi.</p></div><button class="full" onclick="contactFacebook(event)">Mở Facebook</button>`)}
-function contactFacebook(e){e.preventDefault();window.open("https://www.facebook.com/TiemnhaKhoai9/", "_blank");}
-function contactInstagram(e){e.preventDefault();alert("Bạn hãy thay link Instagram của Tiệm nhà Khoai trong app.js.");}
-render();save();
+const money=n=>new Intl.NumberFormat("vi-VN").format(n)+" ₫";
+const save=()=>localStorage.setItem("khoaiCart",JSON.stringify(cart));
+
+function renderProducts(cat="Tất cả"){
+ const grid=document.querySelector("#productsGrid");
+ const list=cat==="Tất cả"?products:products.filter(p=>p.cat===cat);
+ grid.innerHTML=list.map(p=>`
+  <article class="product">
+    <div class="product-img"><img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=placeholder>Ảnh sản phẩm</span>'"></div>
+    <div class="product-body">
+      <h3>${p.name}</h3><p>${p.desc}</p><div class="price">${money(p.price)}</div>
+      <button class="add" data-add="${p.id}">Thêm vào giỏ 🛒</button>
+    </div>
+  </article>`).join("");
+ document.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>add(+b.dataset.add));
+}
+
+function add(id){
+ const item=cart.find(x=>x.id===id);
+ if(item)item.qty++; else cart.push({id,qty:1});
+ save();renderCart();openDrawer();
+}
+function change(id,d){
+ const item=cart.find(x=>x.id===id); if(!item)return;
+ item.qty+=d;if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
+ save();renderCart();
+}
+function renderCart(){
+ const wrap=document.querySelector("#cartItems");
+ if(!cart.length)wrap.innerHTML='<p class="small">Giỏ hàng đang trống. Hãy chọn sản phẩm yêu thích nhé 💛</p>';
+ else wrap.innerHTML=cart.map(x=>{const p=products.find(p=>p.id===x.id);return `<div class="cart-row"><div><h4>${p.name}</h4><span class="small">${money(p.price)} × ${x.qty}</span></div><div class="qty"><button data-minus="${p.id}">−</button><b>${x.qty}</b><button data-plus="${p.id}">+</button></div></div>`}).join("");
+ document.querySelector("#cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
+ document.querySelector("#cartTotal").textContent=money(cart.reduce((s,x)=>s+(products.find(p=>p.id===x.id).price*x.qty),0));
+ document.querySelectorAll("[data-minus]").forEach(b=>b.onclick=()=>change(+b.dataset.minus,-1));
+ document.querySelectorAll("[data-plus]").forEach(b=>b.onclick=()=>change(+b.dataset.plus,1));
+}
+function openDrawer(){document.querySelector("#cartDrawer").classList.add("show")}
+function closeDrawer(){document.querySelector("#cartDrawer").classList.remove("show")}
+
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderProducts(b.dataset.cat)});
+document.querySelector("#openCart").onclick=openDrawer;
+document.querySelector("#closeCart").onclick=closeDrawer;
+document.querySelector("#checkoutBtn").onclick=()=>{
+ if(!cart.length)return alert("Giỏ hàng đang trống.");
+ closeDrawer();document.querySelector("#checkoutModal").classList.add("show");
+};
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>document.getElementById(b.dataset.close).classList.remove("show"));
+
+document.querySelector("#checkoutForm").onsubmit=e=>{
+ e.preventDefault();
+ const order={
+  code:"TNK"+Date.now().toString().slice(-8),
+  phone:document.querySelector("#customerPhone").value.trim(),
+  name:document.querySelector("#customerName").value.trim(),
+  receiver:document.querySelector("#receiverName").value.trim(),
+  address:document.querySelector("#address").value.trim(),
+  items:cart,
+  total:cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0),
+  status:"Đã tiếp nhận"
+ };
+ const orders=JSON.parse(localStorage.getItem("khoaiOrders")||"[]");orders.push(order);localStorage.setItem("khoaiOrders",JSON.stringify(orders));
+ cart=[];save();renderCart();document.querySelector("#checkoutModal").classList.remove("show");
+ alert("Đặt hàng thành công! Mã đơn: "+order.code);
+ e.target.reset();
+};
+
+document.querySelector("#lookupForm").onsubmit=e=>{
+ e.preventDefault();
+ const phone=document.querySelector("#lookupPhone").value.trim();
+ const orders=JSON.parse(localStorage.getItem("khoaiOrders")||"[]").filter(o=>o.phone===phone);
+ const box=document.querySelector("#lookupResult");
+ if(!orders.length){box.innerHTML='<p class="small">Chưa tìm thấy đơn hàng với số điện thoại này.</p>';return}
+ box.innerHTML=orders.map(o=>`<div class="info-grid"><article><b>Mã đơn:</b> ${o.code}<br><b>Trạng thái:</b> ${o.status}<br><b>Tổng:</b> ${money(o.total)}</article></div>`).join("");
+};
+
+renderProducts();renderCart();

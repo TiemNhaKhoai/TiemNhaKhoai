@@ -1,67 +1,126 @@
 <!doctype html>
 <html lang="vi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tiệm nhà Khoai</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#eef4f1;font-family:Arial,Helvetica,sans-serif;color:#102d49}
-.shop{width:min(100%,680px);margin:auto;background:#fff;min-height:100vh;box-shadow:0 0 20px #00000008}
-header{height:68px;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;background:#fff;z-index:5}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px}.brand img{width:40px;height:40px;border-radius:50%;object-fit:contain;object-position:center;background:#fff;padding:3px;border:1px solid #ddd;display:block}
-.bell{font-size:25px;background:none;border:0;cursor:pointer}.hero{padding:0 10px}.banner{height:245px;background:#fff8fa url("banner-tiem-nha-khoai.png") center/cover no-repeat;border-bottom:1px solid #eee}.profile{padding:0 8px 15px;position:relative}.logo{width:96px;height:96px;border-radius:50%;background:#fff;object-fit:contain;object-position:center;padding:6px;border:4px solid #fff;box-shadow:0 2px 10px #0002;margin-top:-42px;display:block}.social{display:flex;gap:8px;margin:4px 0 0 50px;align-items:center}.social a{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid #eee;text-decoration:none;color:#1b4d78;font-weight:bold}.title-row{display:flex;align-items:center;justify-content:space-between;gap:10px}.title{font-size:25px;font-weight:800;margin:7px 0 3px}.sub{color:#718096;font-size:13px}.info{border:1px solid #ddd;border-radius:13px;padding:10px 13px;background:#fff}.info button{border:1px solid #ddd;background:#fff;border-radius:10px;padding:9px 13px;font-weight:700;color:#17334f}
-.cats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #eee;border-bottom:1px solid #eee;padding:12px 3px}.cat{text-align:center;padding:8px 2px;border-radius:12px;cursor:pointer}.cat:hover{background:#f7f8f8}.cat .ico{font-size:28px}.cat b{display:block;font-size:14px;margin-top:2px}.cat small{color:#788494}
-.welcome{margin:14px 10px;background:#fff2a8;border-radius:15px;padding:13px 15px;display:flex;gap:10px;align-items:center}.welcome strong{display:block;font-size:14px}.welcome span{font-size:12px;color:#555}
-.filters{display:flex;gap:7px;overflow:auto;padding:0 10px 10px}.pill{border:1px solid #ddd;background:#fff;border-radius:20px;padding:8px 14px;white-space:nowrap;cursor:pointer}.pill.active{background:#243642;color:#fff;border-color:#243642}
-.section{padding:0 10px 100px}.section-head{display:flex;justify-content:space-between;align-items:center}.section-head h2{font-size:19px;margin:10px 0}.count{font-size:12px;color:#8b949e}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.card{border:1px solid #eee;border-radius:12px;overflow:hidden;background:#fff}.card img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#f3f1e7}.card-body{padding:10px}.card h3{font-size:14px;line-height:1.25;margin:0 0 5px;color:#142d45}.tag{font-size:11px;color:#8b95a0}.price{font-weight:800;margin:7px 0;color:#142d45}.buy{width:100%;border:0;border-radius:9px;padding:9px;background:#17344f;color:#fff;font-weight:700;cursor:pointer}.buy:hover{opacity:.9}
-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,680px);height:68px;background:#fff;border-top:1px solid #ddd;display:grid;grid-template-columns:repeat(4,1fr);z-index:10}.nav{border:0;background:#fff;color:#777;font-size:11px;cursor:pointer}.nav span{display:block;font-size:21px;margin-bottom:3px}.nav.active{color:#17344f;font-weight:800}.plus{position:absolute;left:50%;top:-30px;transform:translateX(-50%);width:54px;height:54px;border-radius:17px;background:#12a1d1;color:#fff;border:0;font-size:28px;box-shadow:0 3px 10px #0002}
-@media(min-width:681px){body{padding:0 0}.shop{min-height:100vh}}
-</style>
-
-<style>
-.shop-banner img, .banner img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  object-position: center;
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tiệm Nhà Khoai</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="shop">
-<header><div class="brand"><img src="logo-tiem-nha-khoai-moi.png" onerror="this.style.display='none'">Tiệm nhà Khoai</div><button class="bell" aria-label="Thông báo">🔔</button></header>
-<div class="hero">
-<div class="profile">
-<img class="logo" src="logo-tiem-nha-khoai-moi.png" alt="Tiệm nhà Khoai">
-<div class="social"><a href="https://www.facebook.com/TiemnhaKhoai9/" target="_blank">f</a><a href="#" onclick="return false">◎</a></div>
-<div class="title-row"><div><div class="title">Tiệm nhà Khoai</div><div class="sub">KR Order Album & MD Hàn Quốc · Nhận order / hàng có sẵn</div></div><div class="info"><button onclick="alert('Tiệm nhà Khoai\\nFacebook: TiemnhaKhoai9')">✎ Thông tin shop</button></div></div>
-</div>
-</div>
-<div class="cats">
-<div class="cat" onclick="filterCat('ALBUM')"><div class="ico">💿</div><b>Album</b><small>K-POP</small></div>
-<div class="cat" onclick="filterCat('MD')"><div class="ico">🎁</div><b>MD</b><small>Goods</small></div>
-<div class="cat" onclick="filterCat('LIGHTSTICK')"><div class="ico">📣</div><b>Lightstick</b><small>Official</small></div>
-<div class="cat" onclick="alert('Chức năng tra cứu đơn hàng sẽ được kết nối sau')"><div class="ico">📦</div><b>Tra cứu</b><small>Đơn hàng</small></div>
-</div>
-<div class="welcome">💛<div><strong>Chào mừng đến Tiệm nhà Khoai</strong><span>Chọn sản phẩm, thêm vào giỏ và gửi đơn cho shop.</span></div></div>
-<div class="filters"><button class="pill active" onclick="filterCat('ALL',this)">Tất cả</button><button class="pill" onclick="filterCat('ALBUM',this)">Album</button><button class="pill" onclick="filterCat('MD',this)">MD</button><button class="pill" onclick="filterCat('LIGHTSTICK',this)">Lightstick</button><button class="pill" onclick="filterCat('CORTIS',this)">CORTIS</button></div>
-<section class="section"><div class="section-head"><h2>Sản phẩm mới</h2><span class="count" id="count"></span></div><div class="grid" id="products"></div></section>
-</div>
-<nav><button class="nav active"><span>⌂</span>Trang chủ</button><button class="nav" onclick="alert('Danh mục sản phẩm')"><span>▣</span>Nội dung</button><button class="nav" onclick="alert('Giỏ hàng của bạn đang trống')"><span>🛍</span>Giỏ hàng</button><button class="nav"><span>☰</span>Khác</button><button class="plus" onclick="alert('Thêm sản phẩm')">+</button></nav>
-<script>
-const products=[
-["CORTIS Ball Baby - Pink","CORTIS","26,500 ₩"],["CORTIS Ball Baby - Blue","CORTIS","26,500 ₩"],["CORTIS Ball Baby - Yellow","CORTIS","26,500 ₩"],["CORTIS Ball Baby - White","CORTIS","26,500 ₩"],["Album K-POP","ALBUM","35,000 ₩"],["MD Hàn Quốc","MD","25,000 ₩"],["Lightstick Official","LIGHTSTICK","75,000 ₩"],["Photocard Set","ALBUM","15,000 ₩"]
-];
-function render(list=products){const box=document.getElementById('products');box.innerHTML=list.map(p=>`<article class="card"><img src="product-placeholder.jpg" alt="${p[0]}"><div class="card-body"><h3>${p[0]}</h3><div class="tag">${p[1]}</div><div class="price">${p[2]}</div><button class="buy" onclick="addCart('${p[0]}')">Thêm vào giỏ</button></div></article>`).join('');document.getElementById('count').textContent=list.length+' sản phẩm'}
-function filterCat(cat,el){if(el){document.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));el.classList.add('active')}else{document.querySelectorAll('.pill').forEach(x=>x.classList.toggle('active',x.textContent.toUpperCase()===cat||cat==='ALL'&&x.textContent==='Tất cả'))}render(cat==='ALL'?products:products.filter(p=>p[1]===cat))}
-function addCart(name){alert(name+' đã được thêm vào giỏ hàng.')}
-render();
-</script>
-</body></html>
-<style>
-/* Banner đã được tắt theo yêu cầu */
-.banner, .shop-banner, .hero-banner, .cover-banner {
-  display: none !important;
-}
-</style>
+  <header class="topbar">
+    <div class="brand">
+      <img src="logo-tiem-nha-khoai-moi.png" alt="Tiệm Nhà Khoai" onerror="this.style.display='none'">
+      <div>
+        <h1>Tiệm Nhà Khoai</h1>
+        <p>Album • MD • Lightstick • Hàng có sẵn</p>
+      </div>
+    </div>
+    <button class="cart-btn" id="openCart">🛒 <span id="cartCount">0</span></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">TIỆM NHÀ KHOAI</p>
+        <h2>Góc nhỏ dành cho những món bạn yêu thích 💛</h2>
+        <p>Đặt hàng nhanh, xem giỏ hàng và gửi thông tin đơn cho shop.</p>
+        <a class="primary" href="#products">Xem sản phẩm</a>
+      </div>
+      <img src="banner-tiem-nha-khoai.jpg" alt="Tiệm Nhà Khoai" onerror="this.style.display='none'">
+    </section>
+
+    <section class="follow-box">
+      <strong>Theo dõi</strong>
+      <div class="follow-buttons">
+        <a class="follow-btn" href="https://www.facebook.com/TiemnhaKhoai9/" target="_blank" rel="noopener">Facebook</a>
+        <a class="follow-btn" href="LINK_SHOPEE_CUA_BAN" target="_blank" rel="noopener">Shopee</a>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">DANH MỤC</p>
+          <h2>Sản phẩm</h2>
+        </div>
+        <div class="filters">
+          <button class="filter active" data-cat="Tất cả">Tất cả</button>
+          <button class="filter" data-cat="CORTIS">CORTIS</button>
+          <button class="filter" data-cat="ALBUM">ALBUM</button>
+          <button class="filter" data-cat="MD">MD</button>
+          <button class="filter" data-cat="LIGHTSTICK">LIGHTSTICK</button>
+        </div>
+      </div>
+      <div id="productsGrid" class="product-grid"></div>
+    </section>
+
+    <section class="info-grid">
+      <article>
+        <h3>📦 Giao hàng</h3>
+        <p>Shop sẽ xác nhận đơn và trao đổi phí vận chuyển với khách trước khi gửi.</p>
+      </article>
+      <article>
+        <h3>💬 Liên hệ</h3>
+        <p>Nhắn Facebook Tiệm Nhà Khoai để được hỗ trợ đơn hàng nhanh nhất.</p>
+      </article>
+      <article>
+        <h3>💛 Lưu ý</h3>
+        <p>Vui lòng kiểm tra thông tin nhận hàng trước khi xác nhận đơn.</p>
+      </article>
+    </section>
+
+    <section class="lookup">
+      <div>
+        <p class="eyebrow">ĐƠN HÀNG</p>
+        <h2>Tra cứu đơn</h2>
+        <p>Nhập số điện thoại đã dùng khi đặt hàng.</p>
+      </div>
+      <form id="lookupForm">
+        <input id="lookupPhone" type="tel" placeholder="Ví dụ: 09xxxxxxxx" required>
+        <button class="primary" type="submit">Tra cứu</button>
+      </form>
+      <div id="lookupResult"></div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Tiệm Nhà Khoai</strong>
+    <span>© 2026 • Album • MD • Lightstick</span>
+    <a href="https://www.facebook.com/TiemnhaKhoai9/" target="_blank" rel="noopener">Facebook</a>
+  </footer>
+
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <h2>Giỏ hàng</h2>
+        <button class="icon-btn" id="closeCart">×</button>
+      </div>
+      <div id="cartItems"></div>
+      <div class="cart-total">
+        <span>Tạm tính</span><strong id="cartTotal">0 ₫</strong>
+      </div>
+      <button class="primary full" id="checkoutBtn">Thanh toán</button>
+      <p class="small">Phí ship sẽ được shop xác nhận sau.</p>
+    </div>
+  </aside>
+
+  <div class="modal" id="checkoutModal">
+    <div class="modal-card">
+      <button class="icon-btn close-modal" data-close="checkoutModal">×</button>
+      <p class="eyebrow">THANH TOÁN</p>
+      <h2>Thông tin đặt hàng</h2>
+      <form id="checkoutForm">
+        <label>Tên Facebook *<input id="customerName" required></label>
+        <label>Số điện thoại *<input id="customerPhone" type="tel" required></label>
+        <label>Email<input id="customerEmail" type="email"></label>
+        <label>Tên người nhận *<input id="receiverName" required></label>
+        <label>Địa chỉ nhận hàng *<textarea id="address" required></textarea></label>
+        <label>Ghi chú<textarea id="note"></textarea></label>
+        <button class="primary full" type="submit">Xác nhận đơn hàng 💛</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
