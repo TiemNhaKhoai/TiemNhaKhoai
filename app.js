@@ -29,6 +29,6 @@ function copyOrder(id){let o=JSON.parse(localStorage.getItem("khoaiOrders")||"[]
 function openOrders(){modal(`<button class="close" onclick="closeModal()">×</button><h2>📦 Tra cứu đơn hàng</h2><div class="field"><label>Số điện thoại</label><input id="lookup" placeholder="Nhập số điện thoại"></div><button class="full" onclick="lookup()">Tra cứu</button><div id="orders"></div>`)}
 function lookup(){let p=val("lookup"),a=JSON.parse(localStorage.getItem("khoaiOrders")||"[]").filter(x=>x.phone===p),e=document.getElementById("orders");e.innerHTML=a.length?a.reverse().map(o=>`<div class="orderbox"><b>${o.id}</b><p>${money(o.total)}</p><p>${o.status}</p></div>`).join(""):"Không tìm thấy đơn hàng."}
 function openInfo(){modal(`<button class="close" onclick="closeModal()">×</button><h2>💛 Tiệm nhà Khoai</h2><p>Shop order Album, MD, Lightstick và hàng Hàn Quốc.</p><div class="orderbox"><b>Giờ hỗ trợ</b><p>Hàng ngày · vui lòng nhắn Facebook/Instagram để được phản hồi.</p></div><button class="full" onclick="contactFacebook(event)">Mở Facebook</button>`)}
-function contactFacebook(e){e.preventDefault();alert("Bạn hãy thay link Facebook của Tiệm nhà Khoai trong app.js.");}
+function contactFacebook(e){e.preventDefault();alert("window.open("https://www.facebook.com/TiemnhaKhoai9/", "_blank");}
 function contactInstagram(e){e.preventDefault();alert("Bạn hãy thay link Instagram của Tiệm nhà Khoai trong app.js.");}
 render();save();
