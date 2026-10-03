@@ -2,132 +2,110 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tiệm Nhà Khoai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Greengreen — Chi tiết sản phẩm</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <img src="TiemNhaKhoai_GitHub_Avatar.png" alt="Tiệm Nhà Khoai" onerror="this.style.display='none'">
-      <div>
-        <h1>Tiệm Nhà Khoai</h1>
-        <p> Tiệm nhận order hàng Kpop & Goods </p>
-      </div>
-    </div>
-    <button class="cart-btn" id="openCart">🛒 <span id="cartCount">0</span></button>
+<div class="app">
+  <header class="header">
+    <button class="back" onclick="history.back()" aria-label="Quay lại">←</button>
+    <h1>Chi tiết sản phẩm</h1>
   </header>
 
   <main>
-    <section class="hero">
-  <div class="hero-content">
-    <p class="eyebrow">TIỆM NHÀ KHOAI</p>
-
-    <h2>
-      Tiệm nhận order hàng Kpop, Gdtt sau 2h chiều ở Hà Nội 💛
-    </h2>
-
-    <p class="hero-desc">
-      📢 THEO DÕI THÔNG BÁO CỦA TIỆM QUA KÊNH DƯỚI ĐÂY Ạ ❤️
-      <br>
-      https://www.messenger.com/channel/TiemnhaKhoai9
-    </p>
-
-    <a class="primary" href="#products">Xem sản phẩm</a>
-  </div>
-</section>
-
-<section class="follow-box">
-      <strong>Theo dõi</strong>
-      <div class="follow-buttons">
-        <a class="follow-btn" href="https://www.facebook.com/TiemnhaKhoai9/" target="_blank" rel="noopener">Facebook</a>
+    <section class="gallery">
+      <div class="photo">
+        <img id="productImage" src="greengreen-1.jpg" alt="Greengreen">
+        <button class="gallery-btn prev" onclick="gallery(-1)">‹</button>
+        <button class="gallery-btn next" onclick="gallery(1)">›</button>
+      </div>
+      <div class="thumbs" id="thumbs">
+        <button class="thumb active" onclick="showImage(0)"><img src="greengreen-1.jpg" alt=""></button>
+        <button class="thumb" onclick="showImage(1)"><img src="greengreen-2.jpg" alt=""></button>
+        <button class="thumb" onclick="showImage(2)"><img src="greengreen-3.jpg" alt=""></button>
       </div>
     </section>
 
-    <section class="section" id="products">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">DANH MỤC SẢN PHẨM</p>
-          <h2>Tất cả</h2>
+    <section class="content">
+      <div class="brand">DIAH.WTS · CORTIS</div>
+      <h2>✦ Greengreen ✦</h2>
+      <div class="rating">★★★★★ <span>Có sẵn · Ship trong ngày ▫</span></div>
+      <div class="price">290.000 <u>đ</u></div>
+
+      <div class="divider"></div>
+
+      <div class="variant-head">
+        <b>Phân loại</b>
+        <span>Còn 2 sản phẩm</span>
+      </div>
+
+      <div class="label">PTB</div>
+      <div class="chips" id="ptb">
+        <button class="chip selected">Bridge (green)</button>
+        <button class="chip">Street (blue)</button>
+        <button class="chip">Studio (white)</button>
+        <button class="chip">Set 3ptb (S + B + S)</button>
+        <button class="chip">Set 4 Weverse ver</button>
+      </div>
+
+      <div class="label goods-label">GOODS</div>
+      <div class="chips" id="goods">
+        <button class="chip">Vinyl</button>
+        <button class="chip">Balm</button>
+        <button class="chip">Dice</button>
+      </div>
+
+      <div class="promo-space"></div>
+
+      <div class="quantity-row">
+        <b>Số lượng</b>
+        <div class="quantity">
+          <button onclick="changeQty(-1)">−</button>
+          <span id="qty">1</span>
+          <button onclick="changeQty(1)">＋</button>
         </div>
-        <div class="filters">
-          <button class="filter active" data-cat="Tất cả">Tất cả</button>
-          <button class="filter" data-cat="CORTIS">CORTIS</button>
-          <button class="filter" data-cat="PRE ORDER">PRE ORDER</button>
-          <button class="filter" data-cat="ALBUM">ALBUM</button>
-          <button class="filter" data-cat="MERCH">MERCH</button>
+      </div>
+
+      <button class="add-cart" onclick="addCart()">Thêm vào giỏ 🛒 ♥</button>
+
+      <details open>
+        <summary>Mô tả</summary>
+        <p>Sản phẩm K-Pop nguyên seal chính hãng</p>
+      </details>
+
+      <details open>
+        <summary>Thông tin chi tiết</summary>
+        <div class="small">
+          <p>Nhóm: Cortis</p>
+          <p>Album: Greengreen</p>
+          <p>Phân loại: PTB</p>
+          <p>Phiên bản: Bridge (green)</p>
+          <p>Mã sản phẩm: 355896508543</p>
         </div>
-      </div>
-      <div id="productsGrid" class="product-grid"></div>
-    </section>
+      </details>
 
-    <section class="info-grid">
-      <article>
-        <h3>📦 Giao hàng</h3>
-        <p>Hàng sẽ gửi qua VTP giá ship đơn nhỏ <20K, Các mặt hàng nặng, to quá khổ có thể phát sinh phí cao hơn.</p>
-      </article>
-      <article>
-        <h3>💬 Liên hệ</h3>
-        <p>Nhắn Facebook Tiệm Nhà Khoai để được hỗ trợ đơn hàng nhanh nhất.</p>
-      </article>
-      <article>
-        <h3>💛 Lưu ý</h3>
-        <p>Vui lòng kiểm tra thông tin nhận hàng trước khi xác nhận đơn, việc đổi thông tin ship chỉ trong vòng 1 ngày sau khi thông báo hàng về, chú ý kênh của Tiệm và gmail để biết nắm bắt được lịch giao hàng ạ.</p>
-      </article>
-    </section>
+      <details open>
+        <summary>Survey QR Card</summary>
+        <p>Survey QR card đen trắng chỉ có trong album đợt pre-order/first-print. Những đơn đặt sau comeback có thể thuộc đợt in 2 nên không kèm. Đây là thông tin chính thức từ Weverse của nhóm và toàn bộ nghệ sĩ thuộc Hybe, không phải lô sản xuất.</p>
+      </details>
 
-    <section class="lookup">
-      <div>
-        <p class="eyebrow">ĐƠN HÀNG</p>
-        <h2>Tra cứu đơn</h2>
-        <p>Nhập số điện thoại đã dùng khi đặt hàng.</p>
-      </div>
-      <form id="lookupForm">
-        <input id="lookupPhone" type="tel" placeholder="Ví dụ: 09xxxxxxxx" required>
-        <button class="primary" type="submit">Tra cứu</button>
-      </form>
-      <div id="lookupResult"></div>
+      <details open>
+        <summary>Giao hàng và đổi trả</summary>
+        <h3>Giao hàng</h3>
+        <div class="info"><b>Ship SPX nhận hàng sau 1-4 ngày</b><br>Phí ship: đồng giá 14.000-17.600đ đơn 1kg (+5.000đ/kg tiếp theo, đơn trên 3.000.000đ SPX phụ thu 25.000đ hàng giá trị cao).</div>
+        <div class="info"><b>Ship Be/Grab nội thành Hà Nội nhận hàng ngay</b><br>Phí ship: ~25.000đ bán kính 5km, nhận Facebook nếu cần shop tra ship trước, hoặc bạn đẹp có thể tự book ship.</div>
+        <div class="info"><b>Giao dịch trực tiếp gần Keangnam, Landmark 72 Hà Nội</b><br>Thường từ 2-4 chiều các ngày, nhắn Facebook để hẹn trước.</div>
+        <p>Nếu đơn hoàn trả vì điền sai thông tin hoặc không nghe máy, bạn đẹp sẽ cần thanh toán phí hoàn hàng.</p>
+        <p>Trong trường hợp mất hàng, shop sẽ hỗ trợ khiếu nại và bồi thường theo chính sách của đơn vị vận chuyển.</p>
+        <h3>Đổi trả</h3>
+        <p>Vỏ hộp/album có thể có hằn góc hoặc bìa nhỏ sờn do vận chuyển quốc tế, điều này là bình thường.</p>
+        <p>Với defect card hoặc item bên trong album nguyên seal, shop không thể hỗ trợ đổi trả hay hoàn tiền vì đây là defect sản xuất, mong bạn đẹp thông cảm.</p>
+      </details>
     </section>
   </main>
-
-  <footer>
-    <strong>Tiệm Nhà Khoai</strong>
-    <span>© 2026 • Album • MD • Lightstick</span>
-    <a href="https://www.facebook.com/TiemnhaKhoai9/" target="_blank" rel="noopener">Facebook</a>
-  </footer>
-
-  <aside class="drawer" id="cartDrawer" aria-hidden="true">
-    <div class="drawer-panel">
-      <div class="drawer-head">
-        <h2>Giỏ hàng</h2>
-        <button class="icon-btn" id="closeCart">×</button>
-      </div>
-      <div id="cartItems"></div>
-      <div class="cart-total">
-        <span>Tạm tính</span><strong id="cartTotal">0 ₫</strong>
-      </div>
-      <button class="primary full" id="checkoutBtn">Thanh toán</button>
-      <p class="small">Phí ship sẽ được shop xác nhận sau.</p>
-    </div>
-  </aside>
-
-  <div class="modal" id="checkoutModal">
-    <div class="modal-card">
-      <button class="icon-btn close-modal" data-close="checkoutModal">×</button>
-      <p class="eyebrow">THANH TOÁN</p>
-      <h2>Thông tin đặt hàng</h2>
-      <form id="checkoutForm">
-        <label>Tên Facebook *<input id="customerName" required></label>
-        <label>Số điện thoại *<input id="customerPhone" type="tel" required></label>
-        <label>Email<input id="customerEmail" type="email"></label>
-        <label>Tên người nhận *<input id="receiverName" required></label>
-        <label>Địa chỉ nhận hàng *<textarea id="address" required></textarea></label>
-        <label>Ghi chú<textarea id="note"></textarea></label>
-        <button class="primary full" type="submit">Xác nhận đơn hàng 💛</button>
-      </form>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
+  <div id="toast">Đã thêm vào giỏ hàng ✓</div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
